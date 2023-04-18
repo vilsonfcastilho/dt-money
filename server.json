@@ -1,0 +1,40 @@
+{
+  "transactions": [
+    {
+      "id": "1",
+      "description": "Salário do trabalho",
+      "type": "income",
+      "category": "Salário",
+      "amount": 14000,
+      "createdAt": "2022-07-29T19:36:44.505Z",
+      "updatedAt": "2022-07-29T19:36:44.505Z"
+    },
+    {
+      "id": "2",
+      "description": "Hamburger",
+      "type": "outcome",
+      "category": "Alimentação",
+      "amount": 50,
+      "createdAt": "2022-07-29T19:50:44.505Z",
+      "updatedAt": "2022-07-29T19:50:44.505Z"
+    },
+    {
+      "description": "Jantar no Bunsen",
+      "amount": 35,
+      "category": "Refeição",
+      "type": "outcome",
+      "createdAt": "2023-04-18T22:58:49.022Z",
+      "updatedAt": "2023-04-18T22:58:49.022Z",
+      "id": "GwF70MD"
+    },
+    {
+      "description": "Salário do mês",
+      "amount": 5400,
+      "category": "Salário",
+      "type": "income",
+      "createdAt": "2023-04-18T23:19:36.830Z",
+      "updatedAt": "2023-04-18T23:19:36.830Z",
+      "id": "8etDhU5"
+    }
+  ]
+}
