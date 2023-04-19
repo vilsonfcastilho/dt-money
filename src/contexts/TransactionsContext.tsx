@@ -1,4 +1,6 @@
-import { ReactNode, createContext, useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect, useCallback } from 'react';
+import { createContext } from 'use-context-selector';
+
 import { api } from '../lib/axios';
 
 interface ITransaction {
@@ -33,39 +35,45 @@ export const TransactionContext = createContext({} as ITransactionContext);
 export function TransactionsProvider({ children }: ITransactionsProviderProps) {
   const [ transactions, setTransactions ] = useState<ITransaction[]>([]);
 
-  async function getTransactions(query?: string) {
-    const response = await api.get('/transactions', {
-      params: {
-        _sort: 'createdAt',
-        _order: 'desc',
-        q: query,
-      },
-    });
+  const getTransactions = useCallback(
+    async (query?: string) => {
+      const response = await api.get('/transactions', {
+        params: {
+          _sort: 'createdAt',
+          _order: 'desc',
+          q: query,
+        },
+      });
+  
+      setTransactions(response.data);
+    },
+    [],
+  );
 
-    setTransactions(response.data);
-  }
-
-  async function createTransaction({
-    description,
-    amount,
-    category,
-    type
-  }: ICreateTransactionDTO) {
-    const createdTransaction = await api.post('/transactions', {
+  const createTransaction = useCallback(
+    async ({
       description,
       amount,
       category,
       type,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    });
-
-    setTransactions(state => [createdTransaction.data, ...state]);
-  }
+    }: ICreateTransactionDTO) => {
+      const createdTransaction = await api.post('/transactions', {
+        description,
+        amount,
+        category,
+        type,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+  
+      setTransactions(state => [createdTransaction.data, ...state]);
+    },
+    [],
+  );
 
   useEffect(() => {
     getTransactions();
-  }, []);
+  },[getTransactions]);
 
   return (
     <TransactionContext.Provider value={{

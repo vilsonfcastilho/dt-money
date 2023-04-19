@@ -35,6 +35,15 @@
       "createdAt": "2023-04-18T23:19:36.830Z",
       "updatedAt": "2023-04-18T23:19:36.830Z",
       "id": "8etDhU5"
+    },
+    {
+      "description": "Açai",
+      "amount": 5,
+      "category": "Refeição",
+      "type": "outcome",
+      "createdAt": "2023-04-19T08:29:16.257Z",
+      "updatedAt": "2023-04-19T08:29:16.257Z",
+      "id": "XiHuTlg"
     }
   ]
 }
